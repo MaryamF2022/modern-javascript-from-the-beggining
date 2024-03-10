@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frago>
+    <movie year="1996">
+        <directors names="Cohen brothers"/>
+        <cast>William H Macy</cast>
+        <cast>Frances McDormand</cast>
+    </movie>
+    <tv-series year="2014">
+        <cast>Martin Freeman</cast>
+        <cast>Colin Hanks</cast>
+    </tv-series>
+</frago>

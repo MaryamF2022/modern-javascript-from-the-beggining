@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise all() with css Links</title>
+    <style>
+        *{
+            font-family: sans-serif;
+            background-color: darkmagenta;
+        }
+    </style>
+</head>
+<body>
+    <h1>Heading</h1>
+
+    <script>
+        let log = console.log;
+        let warn = console.warn;
+        const URL1 = "big-font.css";
+        const  URL2 = "color-font.css";
+
+        let p1 = new Promise((resolve, reject) => {
+            let link = document.createElement('link');
+            link.setAttribute('rel', 'stylesheet');
+            link.setAttribute('type', "text/css");
+
+            link.addEventListener("load", function(ev){
+                log('your css is ready to use.');
+                resolve(link);
+            });
+
+            link.addEventListener("error", function(err){
+                warn('your css is NOT ready.');
+                reject(err);
+            });
+
+            link.href = URL1;
+            document.head.appendChild(link);
+        })
+
+        let p2 = new Promise((resolve, reject) => {
+            let link = document.createElement('link');
+            link.setAttribute('rel', 'stylesheet');
+            link.setAttribute('type', 'text/css');
+
+            link.addEventListener('load', function(ev){
+                log('your css is ready to use.');
+                resolve(link);
+            });
+
+            link.addEventListener('error', function(err){
+                warn('your css is NOT ready.');
+                reject(err);
+            })
+
+            link.href = URL2;
+            document.head.appendChild(link);
+        });
+
+
+        Promise.all([p1, p2])
+            .then(links => {
+                console.log("BOTH PROMISES RESOLVED");
+            })
+            .catch(err => {
+                console.log("Error:", err)
+            })
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation</title>
+</head>
+<body>
+    <h1>We can see you</h1>
+
+    <p>LAT: <span></span></p>
+    <p>LNG: <span></span></p>
+    <p>ACCURACY: <span></span></p>
+    <p>HEADING: <span></span></p>
+    <p>SPEED: <span></span></p>
+    <p>ALTITUDE: <span></span></p>
+    <p>TIME: <span></span></p>
+
+    <script>
+        let G, options, spans;
+
+        document.addEventListener('DOMContentLoaded', init);
+
+        function init(){
+            if(navigator.geolocation){
+                //This is the object that let you request the users permission
+                let giveUp = 1000 * 30; // 30 seconds
+                let tooOld = 1000 * 60 * 60; //one hour
+                
+                options = {
+                    enableHighAccuracy: false, //using the actual GBS
+                    timeout: giveUp, //how long until you want the device to give up
+                    maximumAge: tooOld //how long is this information will be valid once a day, 5 minutes, 30seconds 
+                }
+
+                navigator.geolocation.getCurrentPosition(gotPos, posFail, options);
+            }else{
+                //using an old browser that doesn't support geolocation
+            }
+        }
+
+        function gotPos(position){
+            spans = document.querySelectorAll('p span');
+            spans[0].textContent = position.coords.latitude;
+            spans[1].textContent = position.coords.longitude;
+
+            spans[6].textContent = (new Date(position.timestamp)).toLocaleString();
+
+        }
+
+        function posFail(err){
+            //err is a number
+            let errors ={
+                1: 'No permissions',
+                2: 'Unable to determine',
+                3: 'Took too long'
+            }
+
+            document.querySelector('h1').textContent = errors[err.code];
+        }
+
+    </script>
+</body>
+</html>

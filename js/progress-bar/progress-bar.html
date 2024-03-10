@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Progress Bar</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html{
+            font-size: 20px;
+            line-height: 1.5;
+            font-family: sans-serif;
+        }
+        header{
+            min-height: 5rem;
+            border-bottom: 1px solid #333;
+            position: fixed;
+            width: 100%;
+            background-color: #e4e4e4;
+            top: 0;
+            right: 0;
+            left: 0;
+        }
+        header > h1{
+            min-height: 4rem;
+            line-height: 4rem;
+            font-size: 3rem;
+            text-align: center;
+        }
+        header>.bar{
+            height: 0.2rem;
+            margin-top: 0.8rem;
+            padding: 0 0 0 0;
+            width: 0;
+            background-color: cornflowerblue;
+            outline: 2px solid rgba(0, 50, 70, 0.2);
+        }
+        main{
+            min-height: 100vh;
+            margin-top: 6rem;
+            padding: 2rem 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Reading Proress Bar</h1>
+        <div class="bar"></div>
+    </header>
+    <main>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta accusantium eos minima, iure blanditiis sunt voluptates, ipsa, fuga earum est qui magni hic minus. Voluptates veniam quam mollitia, at libero!</p>
+        <p>Nisi obcaecati fuga excepturi blanditiis corporis tenetur nemo dolorum, perferendis velit eos provident reiciendis omnis totam, ut impedit vitae. Blanditiis nihil, vel facere cum porro vitae, quo ratione laudantium similique.</p>
+        <p>Ad quos laudantium aperiam magnam eaque. Facere ipsum eligendi itaque ut odit, quam expedita quas iure molestiae sed, in voluptatem iste consequuntur, amet cum eveniet molestias distinctio atque similique laudantium!</p>
+        <p>Maiores tempore impedit incidunt nulla optio atque odio culpa, asperiores quae, id nihil recusandae ipsa, fugiat nisi non natus tenetur dolores et magnam sunt est cum sapiente magni! Laborum, voluptate.</p>
+        <p>Iste, distinctio. Consequuntur velit perspiciatis fugit, repellat mollitia a consectetur. Labore quisquam, debitis id quis obcaecati velit esse. Autem rerum odit velit expedita debitis natus tempora a vitae assumenda facere.</p>
+        <p>Accusamus deserunt quia laborum tempora veritatis unde, saepe hic similique illo possimus dolorum minus expedita suscipit minima sequi molestiae libero obcaecati alias distinctio quae ab. Odit, at optio nihil iste.</p>
+        <p>Autem doloremque nulla aspernatur ea quibusdam, cum. Dignissimos id earum quisquam, expedita in pariatur laboriosam ex perspiciatis mollitia unde, amet quos aliquid dolorum harum tenetur, tempora, eum. Saepe, debitis, aut!</p>
+        <p>Labore aliquam vero quod, rem nisi corporis, amet consequatur officiis quidem pariatur autem itaque incidunt mollitia cupiditate, esse fuga excepturi. Ratione delectus necessitatibus a debitis. Exercitationem nulla quae voluptatibus molestias.</p>
+        <p>Dolor illo asperiores unde odit commodi eos facilis neque voluptates, libero eaque. Aspernatur iste explicabo debitis natus dolore, neque tempore maxime fuga, velit distinctio accusamus rem, odit amet quaerat nihil!</p>
+        <p>Iste corporis a, perspiciatis vel asperiores adipisci eveniet omnis sunt esse, dolorum tenetur aliquam doloribus odio temporibus alias totam ipsam aut placeat fugit labore, accusamus. Nam id officia unde quae.</p>
+        <p>Ab sit ea, sint nisi? Vitae, ducimus, quibusdam. Neque quam recusandae dolorum suscipit at soluta eligendi. Quo soluta, eos asperiores ducimus ea. Nemo, nostrum quod in odio atque hic ratione.</p>
+        <p>Fugiat eaque in, fuga accusamus delectus explicabo excepturi non at cupiditate harum eligendi, magni officia facilis maxime placeat ab quod nostrum aut commodi sed facere dolore perferendis pariatur. Quasi, est.</p>
+        <p>Voluptas quisquam assumenda, quibusdam blanditiis amet hic, aperiam odit molestias sed eos dolorum animi obcaecati. Officia alias voluptatibus blanditiis odio placeat accusamus quaerat ratione commodi, iste quas atque amet velit.</p>
+        <p>Amet quam, maxime, nemo fugit possimus sint tenetur in! Nostrum dolores soluta suscipit odit beatae, eius, eveniet dignissimos aliquid quod esse cupiditate quia accusantium debitis minima neque! Facilis, quae atque!</p>
+        <p>Eaque fuga iusto veniam, fugiat corrupti incidunt distinctio omnis rem. Optio voluptatibus fuga omnis, corporis aspernatur voluptatum nemo non itaque ea repellendus et natus maxime velit ipsa quos sed labore.</p>
+        <p>Delectus sequi molestiae voluptas animi debitis minima repudiandae, pariatur in laborum, et harum excepturi doloribus iure eligendi placeat tempore corrupti, quisquam alias, eum vel officia repellat voluptatibus deleniti. Veritatis, officiis!</p>
+        <p>Saepe perspiciatis reprehenderit a, perferendis voluptatibus. Quas consequatur hic, cumque error dolorum voluptatem iure voluptatibus, facilis explicabo ipsam aperiam accusamus, consectetur porro ullam voluptas eveniet nesciunt dolor. Aut, deleniti delectus!</p>
+        <p>Quod laboriosam obcaecati placeat quos assumenda cum natus commodi veritatis nobis, minima voluptate, illum minus vel sint molestiae. Maxime, qui officiis nam aliquid similique architecto nulla, dignissimos sit quis odit?</p>
+        <p>Quidem ipsum doloremque nam molestias minus quasi unde odit molestiae dolorum, asperiores possimus sapiente ut. Quibusdam accusantium temporibus ut expedita quisquam assumenda, praesentium tempore ea, molestiae possimus. Officia corporis, quaerat.</p>
+        <p>Culpa cumque reiciendis, numquam possimus. Asperiores ipsa tenetur cum, numquam magni perferendis doloremque. Aliquid doloribus ab dicta sapiente expedita vitae laborum sit voluptate, provident amet at quasi quas nesciunt pariatur.</p>
+        <p>Quasi cum nemo, quos possimus ex quo, rerum et unde adipisci voluptatem est aliquam fuga beatae voluptas animi voluptatibus accusantium perspiciatis officiis dignissimos sequi quia eaque dolor molestias error neque.</p>
+        <p>Soluta totam eius sequi aliquid ducimus a quia expedita illo minus perferendis similique asperiores impedit accusamus, distinctio minima rerum, laborum porro qui tempore fugiat autem neque voluptate praesentium quod dolor.</p>
+        <p>Inventore suscipit qui est cumque expedita eveniet architecto voluptates vero beatae, recusandae reprehenderit minima, labore consequuntur illo, quas illum, quod deserunt sequi soluta nemo facilis dolorem fugiat. Aperiam nam, illo.</p>
+        <p>Perspiciatis nihil ea nulla dignissimos itaque sunt dolore provident autem, ullam blanditiis libero deserunt dolorem aspernatur voluptatem repellat officiis molestias vero, neque nesciunt id dicta. Laborum corrupti exercitationem, consequatur animi!</p>
+        <p>Labore aperiam optio, a, impedit rem fugiat, voluptatum similique velit commodi libero, voluptate tempora nam necessitatibus mollitia. Eveniet totam, placeat, magni, minus quia ut eos aut enim tenetur aliquam accusantium.</p>
+        <p>Voluptates ut, explicabo quisquam excepturi doloribus magnam aliquid quas eligendi! Odit eos quis laudantium, quisquam omnis voluptatibus facilis animi distinctio architecto voluptatem veniam reiciendis illum sit, dolorum possimus suscipit iusto.</p>
+        <p>Iste ipsum repudiandae ut accusamus officiis aliquam quidem saepe sed vero excepturi ea labore harum, animi consectetur voluptates aut natus, quisquam aliquid voluptate sapiente laborum possimus laboriosam quia iusto tempora.</p>
+        <p>Nesciunt iusto numquam repellat id laborum possimus sequi enim dolorem delectus, doloribus cupiditate ea sed repudiandae nihil quo vel vitae aut tempore rem et, recusandae minus aliquid? Illo, eius, suscipit.</p>
+        <p>Maxime vel cupiditate saepe quia quidem, consectetur totam dicta voluptatum nobis, fugiat error sapiente. Expedita voluptates officia enim tenetur, minima impedit, facere corrupti, veritatis doloribus officiis sint pariatur! Fuga, esse.</p>
+        <p>Fugiat sunt, distinctio molestiae error labore perspiciatis non, praesentium ducimus similique ratione eius. Quod repudiandae, incidunt voluptatem dignissimos doloribus error dicta fugit, veritatis ipsa corporis asperiores quam impedit qui sunt!</p>
+    </main>
+
+    <script>
+        let header = document.querySelector('header');
+        let bar = document.querySelector('.bar');
+
+        window.addEventListener('scroll', adjustbar);
+        document.addEventListener('DOMCOntentLoaded', adjustbar);
+
+        function adjustbar(){
+            let pageHeight = document.body.clientHeight;
+            let pageWidth = document.body.clientWidth;
+
+            let pageOffset = window.pageYOffset;
+
+            let bottom = parseInt(getComputedStyle(header).bottom);
+            let top = parseInt(getComputedStyle(header).top);
+
+            let pct = Math.floor((pageOffset + bottom) / pageHeight * 100);
+
+            let w = (pct/100)*pageWidth
+            console.log(pct, w);
+
+            bar.style.width = w + "px";
+
+        }
+    </script>
+</body>
+</html>

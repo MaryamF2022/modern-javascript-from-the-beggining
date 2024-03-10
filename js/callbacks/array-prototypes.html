@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Prototypes</title>
+</head>
+<body>
+    <h1>Using Prototypes to Extend Objects</h1>
+    <script>
+        let log = console.log;
+
+        let names = ['Sterling', 'Pam', 'Cyril', 'Lana', 'Mallory', "Cgeryl"];
+
+        Array.prototype.shuffle = function(){
+            let len = this.length;
+            for(let i =0; i< len; i++){
+                let temp = "".concat(this[i]);
+                let pos = Math.floor(Math.random() * len);
+                let other = "".concat(this[pos]);
+                this[i] = other;
+                this[pos] = temp;
+            }
+            return this;
+        }
+
+        let shuffled = names.shuffle();
+        log(shuffled);
+        log(names);
+    </script>
+</body>
+</html>

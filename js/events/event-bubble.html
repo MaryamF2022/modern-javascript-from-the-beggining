@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling</title>
+    <style>
+        main,div,p,span{
+            padding: 60px;
+            outline: 3px solid red;
+        }
+        main{
+            background-color: #888;
+            height: 400px;
+        }
+        div{
+            background-color: #666;
+            height: 300px;
+        }
+        p{
+            background-color: #444;
+            height: 200px;
+
+        }
+        span{
+            background-color: white;
+            width: 80px;
+            height: 100px;
+            display: inline-block;
+        }
+        .gold{
+            background: gold;
+        }
+    </style>
+</head>
+<body>
+    <main id="m">
+        <div id="d">
+            <p id="p">
+                <span id="s"></span>
+            </p>
+        </div>
+    </main>    
+    <script src="event-bubble.js"></script>
+</body>
+</html>

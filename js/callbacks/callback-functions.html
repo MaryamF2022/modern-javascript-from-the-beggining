@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback functions</title>
+    <style>
+        html{
+            font-size: 20px;
+            line-height: 1.5;
+            font-family: sans-serif;
+            background-color: forestgreen;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>What are Callback Functions?</h1>
+    <h2>How do they work?</h2>
+
+    <script>
+        const app = {
+            geolocation: function(good, bad){
+                if (navigator.geolocation){
+                    let position, error;
+                    let options ={
+                        enableHighAccuracy: false,
+                        timeout: 1000* 30, //30 seconds
+                        maximumAge: 1000*60*60//1hour
+                    }
+
+                    navigator.geolocation.getCurrentPosition((position) =>{
+                        position = position.coords;
+
+                        let pos ={
+                            latitude: position.latitude,
+                            longitude: position.longitude,
+                        }
+
+                        good.call(app.geolocation, pos);
+                    } , (error) => {
+                        error = error.code;
+                        bad.call(app.geolocation, error);
+                    }, options);
+                }
+            }
+        }
+
+        let success = (position) => {
+            console.log(`You are "at" position(${position.latitude}, ${position.longitude})`)
+        }
+
+        let fail = (err) => {
+            console.warn('Something bad happened', err);
+        }
+
+        app.geolocation(success, fail);
+
+    </script>
+</body>
+</html>

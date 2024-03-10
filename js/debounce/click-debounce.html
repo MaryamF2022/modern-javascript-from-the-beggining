@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #btn {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 30px 60px;
+            font-size: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 3px solid #bbb;
+            background-color: #dedede;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+     <button id="btn">Click</button>
+
+     <script>
+        let init = function(ev){
+            let btn = document.getElementById('btn');
+            btn.addEventListener('click', debounce(clickLog, 2000));
+            // btn.addEventListener('click', debounce2(clickLog, 2000))
+        }
+
+        let clickLog = function(ev){
+            console.log('clicked');
+            console.warn(ev.target.tagName)
+        }
+
+        let debounce = function(func, wait, immediat){
+            let timeout;
+            console.log(`timeout at immediate load: ${timeout}`);
+            return function(){
+                let context = this, args = arguments;
+                function later(){
+                    timeout = null;
+                    func.apply(context, args);
+                }
+                let callNow = immediat && !wait;
+                
+                if(timeout) {
+                    clearTimeout(timeout);
+                    console.log(`new timeout ${timeout}`);
+                }
+                timeout = setTimeout(later, wait);
+                if(callNow) later.apply(context, args)
+            }
+        }
+
+        let efficient = function(ev){
+            debounce(clickLog, null, true).bind(ev);
+        }
+        
+        let debounce2 = (fn, delay) => {
+            let id;
+            console.log(`id at immediate load: ${id}`);
+            return (...args) => {
+                console.log(`previous id: ${id}`);
+                if (id) clearTimeout(id);
+                id = setTimeout(() => {
+                    fn(...args)
+                }, delay)
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+     </script>
+
+</body>
+</html>

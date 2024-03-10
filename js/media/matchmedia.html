@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header, main {
+            padding: 2rem;
+        }
+        p{
+            padding: 0.5rem 0;
+        }
+
+        @media only screen and (max-width: 600px){
+            p{
+                color: #bada55;
+                font-size: 1.0rem;
+            }
+        }
+
+        @media only screen and (min-width:601){
+            p{
+                color: rebeccapurple;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Window MatchMedia</h1>
+    </header>
+    <main>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla enim maiores laudantium nemo tempore 
+        officia natus, ab nam rem, dolor sunt possimus et, aperiam provident. Eius repellendus maxime mollitia 
+        quis cum aut dolores quam consequatur voluptatibus? Soluta fugiat ratione quas, autem praesentium veritatis 
+        expedita enim excepturi, adipisci non id ducimus.</p>
+        <p>Voluptatibus dolorum autem corrupti optio saepe sit quia cumque nihil dolores voluptas dignissimos cum 
+        quidem error perspiciatis recusandae numquam soluta tenetur alias sed sint voluptates accusamus, expedita 
+        quae! Rerum voluptatem itaque ut accusamus repellendus, perspiciatis omnis in assumenda amet labore maiores 
+        similique, nam sed nihil cum optio minus consectetur doloribus!</p>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', init);
+
+        function init(){
+            let query = window.matchMedia('(min-width: 601px)');
+
+            if (query.matches){
+                document.querySelector('h1').style.color = 'red';
+            } else {
+                document.querySelector('h1').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

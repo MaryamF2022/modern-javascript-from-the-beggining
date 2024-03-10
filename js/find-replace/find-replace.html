@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find and Replace with String Methods</title>
+</head>
+<body>
+    <header>
+        <h1>Find and Replace with String Methods</h1>
+    </header>
+    <main>
+        <form action="#" method="post">
+            <div>
+                <label for="find">Find: </label>
+                <input type="text" id="find">
+            </div>
+            <div>
+                <label for="replace">Replace: </label>
+                <input type="text" id="replace">
+            </div>
+            <div>
+                <button id="btnSearch">Go</button>
+            </div>
+        </form>
+        <p class="target">Lorem ipsum dolor sit amet apple consectetur adipisicing elit. Apple Dignissimos, 
+        quis blanditiis apple porro autem maiores pariatur optio, odio similique molestiae, nihil nam 
+        quod facilis suscipit magni apple laboriosam architecto deleniti apple voluptatibus appleexplicabo repellat 
+        itaque veritatis. Suscipit commodi ducimus necessitatibus ipsum quisquam ullam minima! Vel 
+        quas apple doloribus placeat, perferendis saepe apple laudantium sed repudiandae deleniti voluptatum 
+        architecto ullam eaque. Dicta blanditiis, explicabo voluptatem cupiditate consectetur excepturi, 
+        repellat deleniti nostrum et eaque apple libero molestias vero quos voluptatum iure, odit similique 
+        ea nisi est! Nam, aut.</p>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            let btn = document.getElementById('btnSearch');
+            btn.addEventListener('click', doFindAndReplace);
+        });
+
+        function doFindAndReplace(ev){
+            ev.preventDefault();
+
+            let find = document.getElementById('find').value;
+            let replace = document.getElementById('replace').value;
+
+            let p = document.querySelector('.target');
+
+            const regexp = new RegExp(`\\b${find}\\b`, 'gi');
+            p.textContent = p.textContent.replaceAll(regexp, replace, 'gi');
+            console.log('Doing replacing');
+        }
+    </script>
+</body>
+</html>

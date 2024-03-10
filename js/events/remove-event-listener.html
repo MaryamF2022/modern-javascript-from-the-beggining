@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .gold{
+            color: goldenrod;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <ul class="list-view">
+            <li class="list-item">first post</li>
+            <li class="list-item">second post</li>
+        </ul>
+    </main>
+    <script>
+        let partyStarted = function(){
+            document.querySelectorAll('.list-item').forEach(item => item.addEventListener('click', randomThing));
+            setInterval(addItem, 2000);
+        }
+        let randomThing = function(ev){
+            let li = ev.currentTarget;
+            li.className = 'gold';
+            setTimeout((function(){
+                this.parentElement.removeChild(this);
+            }).bind(li), 500);
+            li = null;
+        }
+
+        let addItem = function(){
+            let ul = document.querySelector('.list-view');
+            let li = document.createElement('li');
+            li.className = 'list-item';
+            li.textContent = `Post number ${Date.now()}`;
+            li.addEventListener('click', randomThing);
+            ul.appendChild(li);
+        }
+        document.addEventListener('DOMContentLoaded', partyStarted);
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histroy API</title>
+</head>
+<body>
+    <a href="" id="tag">Click me</a>
+    <script>
+        window.addEventListener('popstate', (event)=>{
+            console.log('State recieved: ', event.state);
+        })
+
+        let link = document.getElementById('tag');
+
+        link.addEventListener('click', (ev)=>{
+            ev.preventDefault();
+            history.pushState({name: 'first example'}, null, 'page1.html');
+            history.pushState({name2: "the second example"}, null, 'page2.html')
+        })
+        
+    </script>
+</body>
+</html>

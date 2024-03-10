@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empty Form Elements</title>
+</head>
+<body>
+    <h1>Empty Inputs</h1>
+    <form action="http://google.ca">
+        <p><input type="text" id="username" 
+        placeholder="Give a username" value="freind"></p>
+
+        <p><select name="" id="province">
+            <option value="">Please select a province</option>
+            <option value="BC">british Colombia</option>
+            <option value="NS">Nova Scotia</option>
+            <option value="ON">Ontario</option>
+        </select></p>
+        <p><input type="number" id="age" min="12" max="120"></p>
+        <p><input type="submit" id="btnSubmit" value="Go"></p>
+    </form>
+
+    <div id="output">
+        <!-- put some messages here -->
+    </div>
+
+    <script>
+        let processForm = function(ev){
+            ev.preventDefault();
+            let username = document.getElementById('username');
+            let prov = document.getElementById('province');
+            let age = document.getElementById('age');
+
+            //text input
+                console.log('\nTEXT INPUT');
+                console.log(typeof username.value);
+                console.log(username.value.length);
+                console.log('X' + username.value + 'X');
+                console.log('X' + username.value.trim() + 'X');
+
+            //select
+                console.log('\nSELECT');
+                console.log(typeof prov.value);
+                console.log(prov.value.length);
+                console.log(prov.selectedIndex);
+
+            //input number
+                console.log('\nNUMBER INPUT');
+                console.log(typeof age.value);
+                console.log(age.min);
+                console.log(age.max);
+                console.log(parseInt(age.value));
+                console.log(isNaN(parseInt(age.value)));
+                console.log(parseInt(age.value) && parseInt(age.value) < age.min);
+                console.log(parseInt(age.value) && parseInt(age.value) > age.max)
+
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('btnSubmit').addEventListener('click', processForm);
+        })
+    </script>
+</body>
+</html>

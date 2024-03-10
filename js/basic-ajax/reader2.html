@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Readable Stream</title>
+</head>
+<body>
+    <h1>Reader</h1>
+    <script>
+        let request = new Request("info.xml");
+
+        async function fetchData(){
+            let response = await fetch(request);
+            let reader = await response.body.pipeThrough(new TextDecoderStream()).getReader();
+
+            while(true){
+                let {value, done} = await reader.read();
+                if (done) break;
+                console.log("Chunks recieved", value);
+            }
+
+            console.log("Chunks recieved completed")
+        }
+        try{
+            fetchData();
+        } catch(err){
+            console.log(err.message)
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History API</title>
+</head>
+<body>
+    <h1>Using the History API</h1>
+    <h2>Part One - The Basics</h2>
+    <!-- <h2>Part Two - Controlling Navigation</h2> -->
+    <!-- <p>
+        <button id="btn">Navigate</button>
+        <a href="list" id="link" data-person="456">Navigate</a>
+        <a href="#different"></a>
+    </p> -->
+    <div id="output">
+
+    </div>
+    <script>
+        function show(output){
+            document.getElementById('output').innerHTML += '<p>' + output + '</p>';
+        }
+
+        show('location.href: ' + location.href)
+        show('location.pathname: ' + location.pathname);
+        show('location.protocol: ' + location.protocol );
+        show('location.search: ' + location.search);
+        show('location.hash: ' + location.hash);
+
+        //location.href - "http://127.0.0.1:5500/js/history/history1.html?query=string&num=3#hash"
+        //location.host - "127.0.0.1:5500"
+        //location.hostname - "127.0.0.1"
+        //location.port - "5500"
+        //location.protocol - "http:"
+        //location.pathname - "/js/history/history1.html"
+        //location.search - "?query=string&num=3"
+        //location.hash - "#hash"
+
+        // history.go(-5)
+        // history.forward();
+        // history.back()
+
+        // location.reload()
+        // location.replace('http://www.google.com')
+        // show('history.state' + history.state)
+    </script>
+</body>
+</html>

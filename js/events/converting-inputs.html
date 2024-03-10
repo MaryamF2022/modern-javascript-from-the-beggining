@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To UpperCase</title>
+</head>
+<body>
+    <header>
+        <h1>Converting Text as You Type</h1>
+    </header>
+    <main>
+        <input type="text" id="text" style="font-size: 30px;">
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', init);
+        function init(){
+            document.getElementById('text').addEventListener('input', debounce(upThing, 500));
+            // document.getElementById('text').addEventListener('input', upThing);
+        }
+
+        let debounce = function(func, wait, emmediate){
+            let timeout;
+            return function (...args){
+                function later(){
+                    timeout = null;
+                    if(!emmediate) func.apply(this, args);
+                }
+                if (timeout) clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (emmediate) func.apply(this, args);
+            }
+        }
+
+        function upThing(ev){
+            let value = ev.target.value.toString();
+
+            ev.target.value = value.toUpperCase();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed Items with CSS and Javascript</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            font-size: 20px;
+            font-family: 'Open Sans', 'Gill Sans', Verdana, sans-serif;
+            line-height: 1.5;
+        }
+        header {
+            font-family: 'Gill Sans';
+            /* height: 300px; */
+            background-color: rgb(205, 180, 220);
+            font-size: 1.5rem;
+            padding: 1rem 2rem ;
+            border-bottom: 20px solid rgb(168, 134, 186);
+        }
+        .tab-menu{
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            flex-flow: row nowrap;
+        }
+        .tab-menu li{
+            cursor: pointer;
+        }
+        .tab-nav{
+            padding-bottom: 3px;
+            box-shadow: 0 1px  #ccc;
+        }
+        .tab{
+            text-align: center;
+            flex-basis: 25%;
+            padding: 0.5rem 0;
+        }
+        .tab.active,
+        .tab:hover {
+            padding: 0.5rem 0 0.3rem 0;
+            border-bottom: 0.2rem solid rgb(133, 27, 154);
+            color: rgb(133, 27, 154);
+        }
+        main{
+            position: relative;
+        }
+        .tab-content{
+            display: none;
+            padding: 2rem;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+
+        }
+        .tab-content h2{
+            font-weight: 300;
+            line-height: 1.5;
+        }
+        .tab-content p{
+            text-align: justify;
+        }
+        .tab-content.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Using Tabbed Controls</h1>
+    </header>
+    <nav class="tab-nav">
+        <ul class="tab-menu">
+            <li id="first" class="tab">First</li>
+            <li id="second" class="tab active">Second</li>
+            <li id="third" class="tab">Third</li>
+            <li id="fourth" class="tab">Fourth</li>
+        </ul>
+    </nav>
+    <main>
+        <section id="section-first" class="tab-content">
+            <h2>Some Heading About Section One</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Cum vitae accusamus ullam ducimus consectetur quas similique 
+            odio magni, cupiditate qui libero explicabo, soluta eveniet 
+            eius, dolor nulla quidem dolorum quibusdam cumque repellendus? 
+            Eos rem consequuntur tempore quidem consequatur numquam 
+            dignissimos adipisci impedit iure mollitia, minus soluta nemo 
+            accusamus ratione? Vitae libero hic quae nam odio mollitia ipsum 
+            aspernatur saepe ipsam corrupti sapiente tempore nihil laboriosam 
+            laudantium cum neque eligendi, dicta inventore commodi dolorem</p>
+        </section>
+        <section id="section-second" class="tab-content active">
+            <h2>Some Heading About Section Two</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Cum vitae accusamus ullam ducimus consectetur quas similique 
+            odio magni, cupiditate qui libero explicabo, soluta eveniet 
+            eius, dolor nulla quidem dolorum quibusdam cumque repellendus? 
+            Eos rem consequuntur tempore quidem consequatur numquam 
+            dignissimos adipisci impedit iure mollitia, minus soluta nemo 
+            accusamus ratione? Vitae libero hic quae nam odio mollitia ipsum 
+            aspernatur saepe ipsam corrupti sapiente tempore nihil laboriosam 
+            laudantium cum neque eligendi, dicta inventore commodi dolorem</p>
+        </section>
+        <section id="section-third" class="tab-content">
+            <h2>Some Heading About Section Three</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Cum vitae accusamus ullam ducimus consectetur quas similique 
+            odio magni, cupiditate qui libero explicabo, soluta eveniet 
+            eius, dolor nulla quidem dolorum quibusdam cumque repellendus? 
+            Eos rem consequuntur tempore quidem consequatur numquam 
+            dignissimos adipisci impedit iure mollitia, minus soluta nemo 
+            accusamus ratione? Vitae libero hic quae nam odio mollitia ipsum 
+            aspernatur saepe ipsam corrupti sapiente tempore nihil laboriosam 
+            laudantium cum neque eligendi, dicta inventore commodi dolorem</p>
+        </section>
+        <section id="section-fourth" class="tab-content">
+            <h2>Some Heading About Section Four</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Cum vitae accusamus ullam ducimus consectetur quas similique 
+            odio magni, cupiditate qui libero explicabo, soluta eveniet 
+            eius, dolor nulla quidem dolorum quibusdam cumque repellendus? 
+            Eos rem consequuntur tempore quidem consequatur numquam 
+            dignissimos adipisci impedit iure mollitia, minus soluta nemo 
+            accusamus ratione? Vitae libero hic quae nam odio mollitia ipsum 
+            aspernatur saepe ipsam corrupti sapiente tempore nihil laboriosam 
+            laudantium cum neque eligendi, dicta inventore commodi dolorem</p>
+        </section>
+    </main>
+
+    <script>
+        let tabs, sections;
+
+        let init = function(){
+            tabs = document.querySelectorAll('.tab');
+            sections = document.querySelectorAll('.tab-content');
+            [].forEach.call(tabs, (tab) => {
+                //function will be called 4 times
+                tab.addEventListener('click', switchTab);
+            });
+
+            function switchTab(ev){
+                let tab = ev.target;
+                let id = tab.id;
+
+                let actives = document.querySelectorAll('.active');
+                [].forEach.call(actives, (active) => {
+                    active.classList.remove('active');
+                });
+
+                [].forEach.call(sections, (section) => {
+                    if (section.id === `section-${id}`){
+                        tab.classList.add('active');
+                        section.classList.add('active');
+                    }
+                })
+
+            }
+
+            sections = document.querySelectorAll(".tab-content")
+        }
+
+        window.addEventListener('DOMContentLoaded', init)
+    </script>
+</body>
+</html>

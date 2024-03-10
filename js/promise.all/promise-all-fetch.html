@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise all() and Fetch</title>
+    <style>
+        p{
+            font-size: 2rem;
+            font-weight: 900;
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+    <h1>Using Promise all() with fetch</h1>
+    <div id="output">
+        <!-- display the results here -->
+    </div>
+
+    <script>
+        let log = console.log;
+
+        let datafile1 = fetch("data.json");
+        let datafile2 = fetch("data.json");
+
+        Promise.all([datafile1, datafile2])
+            .then( files => {
+                files.forEach(file => {
+                    process( file.json() );
+                })
+                // files[0].json();
+                // files[1].json();
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+        let process = (prom) => {
+            prom.then(data => {
+                let p = document.createElement('p');
+                p.textContent = data.numbers.join(", ");
+                document.getElementById('output').appendChild(p);
+            })
+        }
+    </script>
+</body>
+</html>

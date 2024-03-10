@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification API</title>
+</head>
+<body>
+    <h1>Notifications API</h1>
+    <p id="output"></p>
+
+    <script>
+        //Notification objects have a close() method. SOME browsers automatically close them.
+        //Notification Evevnts - click, error, close, show
+
+        if ("Notification" in window){
+
+            if (Notification.permission === 'granted') {
+                doNotify()
+            } else {
+                //notification == denied
+                Notification.requestPermission()
+                    .then(function(result){
+                        console.log(result) // granted || denied
+                        if (Notification.permission === 'granted'){
+                            doNotify();
+                        }
+                    })
+            }
+
+            function doNotify(){
+                // If it's okay let's create a notification
+                let title = "The Title";
+                let options = {
+                    body: 'Hello from the depth of JavaScript!',
+                    data: {prop1:123, prop2:"Steve"},
+                    lang: 'en-CA',
+                    //icon
+                    //timestamp
+                    //vibrate
+                }
+                let n = new Notification(title, options);
+
+                n.addEventListener('show', function(ev){
+                    console.log("SHOW", ev.currentTarget.data);
+                })
+                n.addEventListener('close', function(ev){
+                    console.log('CLOSE', ev.currentTarget.body);
+                })
+                setTimeout( n.close.bind(n), 3000);
+            }
+        }
+    </script>
+</body>
+</html>

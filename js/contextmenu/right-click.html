@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Right-Click Menus</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        *, *::before, *::after{
+            box-sizing: inherit;
+        }
+        html{
+            font-size: 16px;
+            font-family: sans-serif;
+            line-height: 1.5;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            box-sizing: border-box;
+        }
+        body{
+            padding: 1rem;
+        }
+        h1, h2, p, div{
+            padding: 1rem 2rem;
+        }
+        .menu{
+            width: 12rem;
+            height: 4.5rem;
+            background-color: #f4f4f4;
+            color: #333;
+            border: 1px solid #aaa;
+            box-shadow: 2px 2px 2px #999;
+            border-radius: 0.2rem;
+            list-style: none;
+            position: fixed;
+        }
+        .menu.off {
+            top: -200%;
+            left: -200%;
+        }
+        .menu-item{
+            height: 1.5rem;
+            line-height: 1.5rem;
+            font-size: 1rem;
+            font-weight: 100;
+            padding: 0 1rem;
+            cursor: pointer;
+        }
+        .menu-item:hover,
+        .menu-item:active{
+            color: #000;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <h1>Right-Click Menus</h1>
+    <h2>`contextmenu` Event</h2>
+    <p>Right-click on the text below</p>
+    <div id="box">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum obcaecati inventore exercitationem voluptatem quaerat dolores non facilis minus recusandae ad veritatis, est fuga accusantium laudantium. Deleniti, aliquid. Sequi, magnam eius aliquid perspiciatis dolor vitae repellat qui exercitationem debitis provident minima doloribus quo iusto placeat ea! Quis ut consequuntur quibusdam harum!</div>
+
+    <ul class="menu">
+        <li class="menu-item" id="red">Red Item</li>
+        <li class="menu-item" id="gold">Gold Item</li>
+        <li class="menu-item" id="green">Green Item</li>
+    </ul>
+    <script>
+        let menu = null;
+        document.addEventListener('DOMContentLoaded', function(){
+            menu = document.querySelector('.menu');
+            menu.classList.add('off');
+
+            let box = document.getElementById('box');
+            box.addEventListener('contextmenu', showMenu);
+
+            menu.addEventListener('mouseleave', hideMenu);
+
+            addMenuListener()
+        });
+
+        function addMenuListener(){
+            document.getElementById('red').addEventListener('click', setColor);
+            document.getElementById('gold').addEventListener('click', setColor);
+            document.getElementById('green').addEventListener('click', setColor);
+
+        }
+
+        function setColor(ev){
+            hideMenu();
+            let clr = ev.target.id;
+            document.getElementById('box').style.background = clr;
+        }
+
+        function showMenu(ev){
+            ev.preventDefault();
+            console.log(ev.clientX, ev.clientY);
+            menu.style.top = `${ev.clientY - 20}px`;
+            menu.style.left = `${ev.clientX - 20}px`;
+            manu.classList.remove('off');
+        }
+
+        function hideMenu(){
+            menu.classList.add('off');
+            menu.style.top = '-200%';
+            menu.style.left = '-200%';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html{
+            font-size: 20px;
+            line-height: 1.6;
+            font-family: sans-serif;
+        }
+        body>h1{
+            padding: 1rem 2rem;
+        }
+        main{
+            padding: 1rem 2rem;
+        }
+
+        .stop-btn {
+            padding: 0.25rem 1rem;
+            background-color: cornflowerblue;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .chld{
+            float: left;
+        }
+        p.chld{
+            padding: 0 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Slideshow</h1>
+    <div class="slideshow">
+        <!-- slideshow content will be loaded here -->
+    </div>
+    <main>
+        <p class="chld">Some other content</p>
+        <button class="stop-btn chld">Stop Slide</button>
+    </main>
+
+    <script src="overflow.js"></script>
+</body>
+</html>

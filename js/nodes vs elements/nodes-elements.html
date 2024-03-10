@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nodes Versus Elements</title>
+</head>
+<!-- this comment is a child of the html element -->
+<body>
+    <h1>Heading</h1>
+    <main id="main">
+        <section id="a">
+            <p>Section A has five paragraphs. Each paragraph is a Child Element Node of the section elemet node.
+            The text inside each paragraph tag is a Text Node</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi consequatur nihil esse consectetur, 
+            asperiores debitis, quod enim, nobis similique est maiores deleniti distinctio non quasi nisi voluptatum 
+            ratione provident soluta.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo inventore a fugit nostrum voluptas ad 
+            necessitatibus, quia iure ex sunt, neque veniam adipisci facilis veritatis nam quaerat nulla. Expedita, 
+            similique?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed reiciendis voluptatibus maiores neque 
+            laudantium eligendi debitis esse consequuntur est ipsam.</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, totam, nobis nam qui deleniti provident 
+            officia repellat iste assumenda quos, voluptas numquam consequatur! Cum, a sunt pariatur suscipit ipsam 
+            tempora.</p>
+        </section>
+
+        <section id="b">
+            <p>Section B has four paragraphs. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut, delectus.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit amet quos distinctio repudiandae perferendis 
+            reiciendis fugit maxime provident illo expedita!</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum, quibusdam id deserunt, aliquid, dolorum 
+            debitis enim veniam saepe ducimus velit suscipit fuga cumque voluptates fugit quae dignissimos architecto 
+            ratione quo.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas eos velit vel ipsam doloribus! Dolorem 
+            inventore itaque quod libero velit natus odio vero animi saepe consequatur magnam, minus, quae cum!</p>
+        </section>
+        <!--
+            comment node after the two sections
+            var main = document.getElementById("main");
+            main.nodeType
+            The No Types
+            1 - Element Node
+            3 - Text Node
+            8 - Comment Nodes
+            9 - Document Node
+            10 - Document Type Node (first child of the document node DOCTYpe)
+            11 - Document Fragment Node (Temporarily it disposed as soon as the data transferred 
+            to the page) 
+            The Deprecated Types
+            2 - Attribute Nodes
+            4 - CData Node
+        -->
+    </main>
+
+    <script>
+        let html = document.documentElement; //the <html> element
+        let body = document.body // the <body>
+        let main = document.getElementById('main');
+        let d = main.ownerDocument; // the document object that main belongs to
+        let df = new DocumentFragment();
+        let txt = document.createTextNode('a text Node')
+        df.appendChild(txt);
+        main.appendChild(df);
+
+        let nodeTypes = {
+            1: 'Element',
+            3: 'Text',
+            8: 'Comment',
+            9: 'Document',
+            10: 'DocType',
+            11: 'Document Fragment'
+        };
+
+        let mainChildren = main.children; //Elements only
+        let num = mainChildren.length;
+        for(let i=0; i<num; i++){
+            let nt = mainChildren[i].nodeType;
+            console.log('main.children', i, nodeTypes[nt]);
+        }
+
+        console.log('');
+        let mainChildNodes = main.childNodes; //Nodes, NodeList [LIVE]
+        let numNodes = mainChildNodes.length;
+        for(let n=0; n<numNodes; n++){
+            let nt = mainChildNodes[n].nodeType;
+            console.log('main.childNodes', n, nodeTypes[nt]);
+        }
+
+        console.log('');
+        let doc = document.childNodes;
+        let numDocNodes = doc.length;
+        for(let c=0; c<numDocNodes; c++){
+            let nt = doc[c].nodeType;
+            console.log('document.childNodes', c, nodeTypes[nt], doc[c].nodeName)
+        }
+
+        //NodeList
+        document.querySelectorAll('.abc');
+        document.body.childNodes
+        
+        //HTMLCollections
+        main.getElementsByClassName('.abc')
+        main.getElementsByTagName('pre')
+        main.getElementsByTagNameNS('xml');
+        main.children
+        
+        /*******************************
+        Be careful when using
+        firstChild      v. firstElementChild
+        lastChild       v. lastElementChild
+        nextSibling     v. nextElementSibling
+        previousSibling v. previousElementSibling
+        NODES           v. ELEMENTS
+        *******************************/
+    </script>
+</body>
+</html>
